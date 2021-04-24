@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>new password</title>
+    <style>
+   table {
+    width: 400px; /* Ширина таблицы в процентах */
+   }
+   .col1 {
+    width: 200px; /* Ширина ячейки */
+   }
+  </style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+
+        <h1>Change password</h1>
+        <p>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+         {% for message in messages %}
+             {{ message }}
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        </p>
+<form method="post" autocomplete="off">
+    <table style="column-gap: 50px">
+        <tr>
+            <td>Login</td>
+            <td><input type="text" name="login"></td>
+        </tr>
+        <tr>
+            <td>New password</td>
+            <td><input type="password" name="new_password"></td>
+        </tr>
+        <tr>
+            <td>Retype</td>
+            <td><input type="password" name="new_password1"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" name="sub" value="Submit"></td>
+        </tr>
+    </table>
+</form>
+{% endblock %}
+</div>

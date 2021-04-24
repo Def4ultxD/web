@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='logo.png') }}"/>
+    <meta name="viewpoint" content="width=device-width,
+   user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    html {
+  scroll-behavior: smooth;
+}
+   H5 {
+    color: #000000;
+    font-size: 170%
+   }
+   H4 {
+    color: #000000;
+    font-size: 170%
+   }
+   button.new {
+    background: -moz-linear-gradient(#fff, #fff);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#212126));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffFFFF');
+    padding: 3px 7px;
+    color: #333;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #666;
+   }
+   leftcol { /* Левая колонка */
+    float: left; /* Обтекание справа */
+    width: 1100px; /* Ширина колонки */
+   }
+   rightcol { /* Правая колонка */
+    margin-left: 220px; /* Отступ слева */
+   }
+   body {
+   background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/diamond_upholstery.png);
+    background-attachment: fixed;
+   }
+    .basket {
+        border: 3px solid #aaa;
+        border-radius: 5px
+    }
+
+</style>
+    {% block title %}{% endblock %}
+</head>
+<body>
+
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <a href="/">
+        <img class="mb-2"
+             src="{{ url_for('static', filename='logo.png') }}"
+             alt="" width="40" height="42">
+    </a>
+    <h5 class="my-0 mr-md-auto font-weight-normal"></h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="/about">Про магазин</a>
+    </nav>
+    <a class="btn btn-outline-primary" href="/personal">
+        Личный кабинет
+    </a>
+</div>
+
+
+{% block body %}{% endblock %}
+
+<footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+        <div class="col-12 col-md">
+            <img class="mb-2"
+                 src="{{ url_for('static', filename='logo.png') }}"
+                 alt="" width="40" height="42">
+            <small class="d-block mb-3 text-muted">© 2021-2021</small>
+        </div>
+        <div class="col-6 col-md">
+            <h5>Features</h5>
+            <ul class="list-unstyled text-small">
+                <li><a target="_blank" class="text-muted" href="https://flask-login.readthedocs.io/en/latest/">Documentation for flask 1</a></li>
+                <li><a target="_blank" class="text-muted" href="https://flask.palletsprojects.com/en/1.1.x/patterns/flashing/">Documentation for flask 2</a></li>
+                <li><a target="_blank" class="text-muted" href="https://flask.palletsprojects.com/en/1.1.x/api/#flask.Flask.after_request">Documentation for flask 3</a></li>
+            </ul>
+        </div>
+        <div class="col-6 col-md">
+            <h5>Resources</h5>
+            <ul class="list-unstyled text-small">
+                <li><a target="_blank" class="text-muted" href="http://htmlbook.ru/">Documentation for all</a></li>
+                <li><a target="_blank" class="text-muted" href="https://schoolsw3.com/index.html">Documentation for all 2</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+</div>
+
+
+</body>
+</html>

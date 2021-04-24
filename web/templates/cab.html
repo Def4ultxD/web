@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Личный кабинет</title>
+<style>
+    .frame {
+    width: 200px;
+    height: 200px;
+    border: 3px solid #aaa;
+    border-radius: 50%
+   }
+
+
+   a.boton {color: rgb(250,50,50)}
+   a.boton:hover {
+   background: rgb(250,50,50);
+   color: rgb(255,255,255)
+    }
+    a.boton:hover span:after {
+  opacity: 1;
+  right: 0;
+   a.boton:active {
+   background: rgb(250,50,50)
+   color: rgb(0,0,50)
+    }
+</style>
+<style>
+.button {
+  display: inline-block;
+  border-radius: 6px;
+  background-color: rgb(250,50,50);
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 18px;
+  padding: 10px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 1px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <table>
+            <tr>
+                <td><img src="{{ url_for('static', filename=pic) }}" class="frame"></td>
+                <td>
+                    <h1>&nbsp  {{ time }}{{ user+'!' }}</h1>
+                    <h2>&nbsp Баланс: 0</h2>
+                    <h2>&nbsp Потрачено: 0</h2>
+
+                </td>
+            </tr>
+
+        </table>
+        <br>
+        <table>
+            <tr>
+                <td>
+                    <a class="button" href="/logout" style="margin-left: 20px"><span>Выйти</span></a>
+                </td>
+                <td>
+                    <a class="button" href="/change_password" style="margin-left: 20px"><span>change pwd</span></a>
+                </td>
+                <td>
+                    <a class="button" href="/sample_file_upload" style="margin-left: 20px"><span>change face</span></a>
+                </td>
+
+            </tr>
+        </table>
+        <br><h2 style="text-align: center">Корзина</h2><br>
+        <div class="basket">
+            {% if data %}
+            <table>
+                {% for i in data %}
+                    <tr>
+                        {% for el in i %}
+                            {% if loop.first %}
+                                <td width="300px"><img src="{{ el }}" width="200" height="170" style="margin:10px"></td>
+                            {% elif not loop.last %}
+                                {% set a = el %}
+                                <td width="300px"><h3>{{ el }}</h3></td>
+                            {% else %}
+                                <td><h1 class="card-title pricing-card-title">{{ el }} <small class="text-muted">рублей</small></h1></td>
+                            {% endif %}
+                        {% endfor %}
+                            <td>
+                                <form method="post">
+                                    <button class="button" style="vertical-align:middle" value="{{ i[1] }}" name="delete_t" type="submit">
+                                        <span>
+                                            Удалить
+                                        </span>
+                                    </button>
+                                </form>
+                            </td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                        <td></td>
+                        <td></td>
+                        <td width="340px"><h2>Итого: {{ price }} <small class="text-muted">рублей</small></h2></td>
+                        <td><button class="button" style="vertical-align:middle; background: rgb(0,123,255)"><span>Купить</span></button></td>
+                    </tr>
+                </table>
+            {% else %}
+            <br><h3 style="margin-left: 30px">Корзина пуста!</h3>
+            {% endif %}
+            <br>
+        </div>
+{% endblock %}
+</div>
